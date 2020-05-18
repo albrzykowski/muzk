@@ -24,6 +24,15 @@ object Main extends App {
     piece.foreach(e => { writer.write(s"${e}\r\n") })
     writer.close()
   }
+  
+  def toHotkey(element: Element): String = {
+    element match {
+    case Note(value, pitch) =>
+      s"Send, ${value}${pitch}{Right}"
+    case Rest(value) =>
+      s"Send, ${value}0{Right}"
+    }
+  }
 
   val piece =
     randomWalk.generate(
@@ -32,16 +41,6 @@ object Main extends App {
       pieceLength,
       withRests
     )
-  save(piece)
-}
-
-object Element {
-  var elementType: ElementType.Value = _
-  var value: Int = _
-  var pitch: String = _
-}
-
-object ElementType extends Enumeration {
-  type ElementType = Value
-  val Note, Rest = Value
+  val hotkeys = piece.map(toHotkey)
+  save(hotkeys)
 }

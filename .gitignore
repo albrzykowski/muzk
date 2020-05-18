@@ -8,3 +8,7 @@ project/plugins/project/
 .cache
 .lib/
 *.txt
+
+.idea/
+muzk.ipr
+muzk.iws
