@@ -14,6 +14,7 @@ object Main extends App {
   val musescorePitches =
     conf.getStringList("pitches").asScala.toSeq.map(i => i: String)
   val pieceLength = conf.getInt("piece-length")
+  val withRests = conf.getBoolean("with-rests")
   val random = Random
   val randomWalk = new RandomWalk(random)
 
@@ -25,7 +26,12 @@ object Main extends App {
   }
 
   val piece =
-    randomWalk.generate(musescoreValues, musescorePitches, pieceLength)
+    randomWalk.generate(
+      musescoreValues,
+      musescorePitches,
+      pieceLength,
+      withRests
+    )
   save(piece)
 }
 
