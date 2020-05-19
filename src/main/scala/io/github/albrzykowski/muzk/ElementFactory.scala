@@ -5,7 +5,7 @@ import io.github.albrzykowski.muzk.{RandomAdapter => Random}
 
 object ElementFactory {
   def get(random: Random, withRests: Boolean, values: Seq[Int],
-      pitches: Seq[String]): Element = {
+      pitches: Seq[String], currentPitch: Option[String]): Element = {
     
     if (!withRests) {
       getNote(random, values, pitches)

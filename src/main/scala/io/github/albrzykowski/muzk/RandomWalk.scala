@@ -25,20 +25,33 @@ class RandomWalk(random: Random) {
       pieceLength: Int,
       withRests: Boolean
   ): List[Element] = {
-    val element = ElementFactory.get(random, withRests, values, pitches)
-    val piece = scala.collection.mutable.ListBuffer[Element]()
+    val element = ElementFactory.get(random, false, values, pitches, None)
+    val piece = scala.collection.mutable.ListBuffer[Element]()  
+    piece += element
     
     for (i <- 1 to pieceLength) {
-      val element = ElementFactory.get(random, withRests, values, pitches)
-      element match {
-        case n: Note => {
-          println(walk[String](n.pitch, pitches))
-          n.pitch = walk[String](n.pitch, pitches)
-        }
-        case Rest(value) => false
-      }
-      piece += element 
+      
+      val current = createElement(element, values, pitches, withRests)
+      
+      piece += createElement(findLastNote(piece), values, pitches, withRests)
     }
+    
     piece.toList
+  }
+  
+  def findLastNote(piece: scala.collection.mutable.ListBuffer[Element]): Note = {
+    piece.filter(x => x.isInstanceOf[Note]).last.asInstanceOf[Note]
+  }
+  
+  def createElement(current: Element, values: Seq[Int],
+      pitches: Seq[String], withRests: Boolean): Element = {
+    val element = ElementFactory.get(random, withRests, values, pitches, None)
+    
+    element match {
+      case Note(value, pitch) => {
+        Note(value, walk[String](current.asInstanceOf[Note].pitch, pitches))
+      }
+      case rest: Rest => rest 
+    }
   }
 }
