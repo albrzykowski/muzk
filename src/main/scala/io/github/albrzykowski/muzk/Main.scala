@@ -24,13 +24,13 @@ object Main extends App {
     piece.foreach(e => { writer.write(s"${e}\r\n") })
     writer.close()
   }
-  
+
   def toHotkey(element: Element): String = {
     element match {
-    case Note(value, pitch) =>
-      s"Send, ${value}${pitch}{Right}"
-    case Rest(value) =>
-      s"Send, ${value}0{Right}"
+      case Note(value, pitch) =>
+        s"Send, ${value}${pitch}{Right}"
+      case Rest(value) =>
+        s"Send, ${value}0{Right}"
     }
   }
 
