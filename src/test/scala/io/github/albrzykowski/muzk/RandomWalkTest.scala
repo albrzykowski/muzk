@@ -40,12 +40,12 @@ class RandomWalkTest extends FlatSpec with MockFactory {
     (randomMock.nextInt _).expects(values.length).returning(values.length - 1).once()
     (randomMock.nextInt _).expects(pitches.length).returning(pitches.length - 1).once()
     (randomMock.nextInt _).expects(values.length).returning(values.length - 1).once()
-    
+
     val result = randomWalk.generate(values, pitches, pieceLength, withRests)
 
     result should equal(expected)
   }
-  
+
   "generate" should "return sequence of Notes and Rests when rests generation is enabled" in {
     val randomMock = mock[Random]
     val withRests = true
@@ -70,7 +70,7 @@ class RandomWalkTest extends FlatSpec with MockFactory {
     // 0:
     (randomMock.nextBoolean _).expects().returning(false).once()
     (randomMock.nextInt _).expects(values.length).returning(values.length - 1).once()
-    
+
     val result = randomWalk.generate(values, pitches, pieceLength, withRests)
 
     result should equal(expected)
