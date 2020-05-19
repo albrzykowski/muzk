@@ -12,3 +12,4 @@ project/plugins/project/
 .idea/
 muzk.ipr
 muzk.iws
+*.iml

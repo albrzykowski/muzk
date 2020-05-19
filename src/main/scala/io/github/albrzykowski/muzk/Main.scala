@@ -11,8 +11,7 @@ object Main extends App {
   val conf = ConfigFactory.load();
 
   val musescoreValues = conf.getIntList("values").asScala.toSeq.map(i => i: Int)
-  val musescorePitches =
-    conf.getStringList("pitches").asScala.toSeq.map(i => i: String)
+  val musescorePitches = conf.getStringList("pitches").asScala.toSeq.map(i => i: String)
   val pieceLength = conf.getInt("piece-length")
   val withRests = conf.getBoolean("with-rests")
   val random = Random
@@ -34,13 +33,7 @@ object Main extends App {
     }
   }
 
-  val piece =
-    randomWalk.generate(
-      musescoreValues,
-      musescorePitches,
-      pieceLength,
-      withRests
-    )
+  val piece = randomWalk.generate(musescoreValues, musescorePitches, pieceLength, withRests)
   val hotkeys = piece.map(toHotkey)
   save(hotkeys)
 }
