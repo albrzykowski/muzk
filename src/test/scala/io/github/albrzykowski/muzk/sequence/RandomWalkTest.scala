@@ -1,4 +1,4 @@
-package io.github.albrzykowski.muzk
+package io.github.albrzykowski.muzk.sequence
 
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalamock.scalatest.MockFactory
