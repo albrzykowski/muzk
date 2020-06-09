@@ -16,7 +16,7 @@ class RandomWalkTest extends FlatSpec with MockFactory {
 
     val expected = List("D", "C", "B")
     val randomWalk = new RandomWalk(randomMock)
-    
+
     // Adds B to result
     (randomMock.nextInt _).expects(seq.length).returning(1).once()
     // Adds C to result
@@ -28,7 +28,7 @@ class RandomWalkTest extends FlatSpec with MockFactory {
 
     result should equal(expected)
   }
-  
+
   "generate" should "return second element when reaches beginning of sequence" in {
     val randomMock = mock[Random]
     val seq = List("A", "B")
@@ -36,7 +36,7 @@ class RandomWalkTest extends FlatSpec with MockFactory {
 
     val expected = List("B", "A")
     val randomWalk = new RandomWalk(randomMock)
-    
+
     // Adds A to result
     (randomMock.nextInt _).expects(seq.length).returning(0).once()
 
@@ -44,7 +44,7 @@ class RandomWalkTest extends FlatSpec with MockFactory {
 
     result should equal(expected)
   }
-  
+
   "generate" should "return penultimate element when reaches end of sequence" in {
     val randomMock = mock[Random]
     val seq = List("A", "B")
@@ -52,7 +52,7 @@ class RandomWalkTest extends FlatSpec with MockFactory {
 
     val expected = List("A", "B")
     val randomWalk = new RandomWalk(randomMock)
-    
+
     // Adds B to result
     (randomMock.nextInt _).expects(seq.length).returning(1).once()
 

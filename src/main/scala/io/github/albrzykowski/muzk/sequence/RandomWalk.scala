@@ -9,7 +9,7 @@ class RandomWalk(random: Random) {
   private def randomStep(): Int = {
     if (random.nextBoolean) 1 else -1
   }
-  
+
   private def nextStep[A](current: A, seq: List[A]): A = {
     if (current == seq.head) {
       seq.take(2).last
@@ -19,7 +19,7 @@ class RandomWalk(random: Random) {
       seq(seq.indexOf(current) + randomStep())
     }
   }
-  
+
   def generate[A](seq: List[A], length: Int): List[A] = {
     @tailrec
     def iter(random: Random, seq: List[A], length: Int, acc: List[A]): List[A] = {
