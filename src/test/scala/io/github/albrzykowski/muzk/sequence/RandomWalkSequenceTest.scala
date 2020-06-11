@@ -5,9 +5,9 @@ import org.scalamock.scalatest.MockFactory
 import org.scalatest._
 import Matchers._
 import io.github.albrzykowski.muzk.{RandomAdapter => Random}
-import io.github.albrzykowski.muzk.sequence.RandomWalk
+// import io.github.albrzykowski.muzk.sequence.RandomWalkSequence
 
-class RandomWalkTest extends FlatSpec with MockFactory {
+class RandomWalkSequenceTest extends FlatSpec with MockFactory {
 
   "generate" should "return sequence of based of random walk" in {
     val randomMock = mock[Random]
@@ -15,7 +15,7 @@ class RandomWalkTest extends FlatSpec with MockFactory {
     val length = 3
 
     val expected = List("D", "C", "B")
-    val randomWalk = new RandomWalk(randomMock)
+    val randomWalk = new RandomWalkSequence(randomMock)
 
     // Adds B to result
     (randomMock.nextInt _).expects(seq.length).returning(1).once()
@@ -35,7 +35,7 @@ class RandomWalkTest extends FlatSpec with MockFactory {
     val length = 2
 
     val expected = List("B", "A")
-    val randomWalk = new RandomWalk(randomMock)
+    val randomWalk = new RandomWalkSequence(randomMock)
 
     // Adds A to result
     (randomMock.nextInt _).expects(seq.length).returning(0).once()
@@ -51,7 +51,7 @@ class RandomWalkTest extends FlatSpec with MockFactory {
     val length = 2
 
     val expected = List("A", "B")
-    val randomWalk = new RandomWalk(randomMock)
+    val randomWalk = new RandomWalkSequence(randomMock)
 
     // Adds B to result
     (randomMock.nextInt _).expects(seq.length).returning(1).once()

@@ -5,7 +5,7 @@ import io.github.albrzykowski.muzk.{RandomAdapter => Random}
 import scala.collection.mutable.ListBuffer
 import scala.annotation.tailrec
 
-class RandomWalk(random: Random) {
+class RandomWalkSequence(random: Random) {
   private def randomStep(): Int = {
     if (random.nextBoolean) 1 else -1
   }

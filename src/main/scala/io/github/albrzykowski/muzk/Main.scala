@@ -1,6 +1,3 @@
 package io.github.albrzykowski.muzk
 
-object Main extends App {
-
-  
-}
+object Main extends App {}
