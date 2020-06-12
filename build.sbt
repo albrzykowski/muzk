@@ -2,7 +2,7 @@ scalaVersion := "2.12.11"
 
 name := "Muzk"
 organization := "io.github.albrzykowski.muzk"
-version := "1.0.0-SNAPSHOT"
+version := "1.1.0-SNAPSHOT"
 
 
 libraryDependencies += "org.typelevel" %% "cats-core" % "2.0.0"
