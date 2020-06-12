@@ -13,7 +13,7 @@ class RandomWalkComposerTest extends FlatSpec with MockFactory {
   "generate" should "return sequence of based of random walk" in {
     val randomMock = mock[Random]
     val randomWalkSequenceMock = mock[RandomWalkSequence]
-    val pitches = List("A", "B", "C")
+    val pitches = List("C", "D", "E", "F", "G", "A", "B")
     val values = List("Whole note", "Half note")
     val types = List("Note", "Rest")
     val randomPitches = List("C", "B", "A")
