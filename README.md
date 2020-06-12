@@ -61,7 +61,7 @@ val values = List("Whole note", "Half note")
 val types = List("Note", "Rest")
 
 random = Random
-val randomWalkComposer = new RandomWalkComposer()
+val randomWalkComposer = new RandomWalkComposer(random)
 ```
 should return something like:
 ```
