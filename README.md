@@ -31,7 +31,7 @@ import package io.github.albrzykowski.muzk.sequence.RandomPermutationSeqence
 // ...
 val seq = List("C", "E", "G", "F#", "B")
 val randomPermutationSequence = new RandomPermutationSequence()
-val result = randomPermutationSequence.generate(seq, 4)
+val result = randomPermutationSequence.generate(seq)
 ```
 should return something like:
 ```
